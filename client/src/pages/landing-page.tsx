@@ -142,21 +142,6 @@ export default function LandingPage() {
                   className="rounded-xl w-full h-auto object-cover transform hover:scale-[1.02] transition-transform duration-700"
                 />
                 
-                {/* Floating Elements */}
-                <motion.div 
-                  initial={{ y: 20, opacity: 0 }}
-                  animate={{ y: 0, opacity: 1 }}
-                  transition={{ delay: 0.6 }}
-                  className="absolute -bottom-6 -left-6 bg-white p-4 rounded-xl shadow-xl border border-border flex items-center gap-3 animate-bounce-slow"
-                >
-                  <div className="bg-green-100 p-2 rounded-lg text-green-600">
-                    <ShieldCheck size={24} />
-                  </div>
-                  <div>
-                    <p className="text-xs text-muted-foreground font-medium">Security Status</p>
-                    <p className="text-sm font-bold text-foreground">Encrypted & Secure</p>
-                  </div>
-                </motion.div>
               </div>
             </motion.div>
           </div>
