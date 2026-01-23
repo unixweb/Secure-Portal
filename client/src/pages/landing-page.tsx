@@ -50,7 +50,7 @@ const translations = {
       items: [
         {
           title: "AES-256-GCM Verschlüsselung",
-          desc: "Alle Dateien werden mit militärischer Verschlüsselung gesichert. Files at Rest & in Transit geschützt."
+          desc: "Alle Dateien werden mit AES-256-GCM verschlüsselt gespeichert und übertragen. Schutz für Daten im Ruhezustand und bei der Übertragung."
         },
         {
           title: "JWT Authentication",
