@@ -387,7 +387,9 @@ export default function LandingPage() {
                 {lang.toUpperCase()}
               </button>
 
-              <Button variant="ghost" className="text-sm font-medium">{t.nav.login}</Button>
+              <Link href="/login">
+                <Button variant="ghost" className="text-sm font-medium">{t.nav.login}</Button>
+              </Link>
               <Button className="bg-primary hover:bg-primary/90 text-white shadow-lg shadow-primary/20">{t.nav.getStarted}</Button>
             </div>
 
@@ -417,7 +419,9 @@ export default function LandingPage() {
               <a href="#how-it-works" className="text-base font-medium text-foreground">{t.nav.howItWorks}</a>
               <a href="#pricing" className="text-base font-medium text-foreground">{t.nav.pricing}</a>
               <div className="pt-4 flex flex-col gap-2">
-                <Button variant="outline" className="w-full">{t.nav.login}</Button>
+                <Link href="/login" className="w-full">
+                  <Button variant="outline" className="w-full">{t.nav.login}</Button>
+                </Link>
                 <Button className="w-full bg-primary text-white">{t.nav.getStarted}</Button>
               </div>
             </div>
