@@ -14,8 +14,18 @@ import {
   Key,
   Mail,
   Activity,
-  Zap
+  Zap,
+  Shield,
+  Eye,
+  FileWarning,
+  Layers
 } from "lucide-react";
+import { 
+  Accordion, 
+  AccordionContent, 
+  AccordionItem, 
+  AccordionTrigger 
+} from "@/components/ui/accordion";
 import { useState } from "react";
 import { motion } from "framer-motion";
 
@@ -30,6 +40,7 @@ const translations = {
   de: {
     nav: {
       features: "Funktionen",
+      security: "Sicherheit",
       howItWorks: "So funktioniert's",
       pricing: "Preise",
       login: "Anmelden",
@@ -74,6 +85,66 @@ const translations = {
         }
       ]
     },
+    security: {
+      headline: "Wie wir Sicherheit umsetzen",
+      subheadline: "Sicherheit ist bei SecurePortal kein nachträgliches Feature. Sie ist Bestandteil der Architektur – von der ersten Zeile Code bis zum Betrieb.",
+      items: [
+        {
+          title: "Verschlüsselung als Fundament",
+          desc: "AES-256-GCM für gespeicherte Daten, TLS für Übertragung und authentifizierte Verschlüsselung gegen Manipulation."
+        },
+        {
+          title: "Zugriffsschutz & Identitäten",
+          desc: "2FA (TOTP), kurzlebige Tokens und strikte rollenbasierte Berechtigungen sorgen für eindeutige Zuordenbarkeit."
+        },
+        {
+          title: "Gesicherter Datei-Upload",
+          desc: "Isolierter Virenscan bei jedem Upload. Infizierte Dateien werden sofort blockiert, bevor sie das System erreichen."
+        },
+        {
+          title: "Nachvollziehbarkeit",
+          desc: "Lückenlose Audit-Logs für Login, Uploads und Löschungen. Jeder Eintrag mit Zeitstempel und Kontext."
+        },
+        {
+          title: "Schutz vor Missbrauch",
+          desc: "Aktiver Schutz durch Rate Limiting gegen Brute-Force sowie strikte Input-Validierung auf allen Schnittstellen."
+        },
+        {
+          title: "Klare Systemtrennung",
+          desc: "Frontend, Backend, Scan-Services und Datenhaltung sind strikt getrennt. Ein Fehler kompromittiert nicht das Gesamtsystem."
+        }
+      ]
+    },
+    faq: {
+      headline: "Technische FAQ",
+      subheadline: "Antworten für kritische Kunden und IT-Sicherheitsbeauftragte.",
+      items: [
+        {
+          q: "Wie sind meine Daten verschlüsselt?",
+          a: "Alle Daten werden mit AES-256-GCM verschlüsselt gespeichert und ausschließlich verschlüsselt übertragen (Files at Rest & in Transit)."
+        },
+        {
+          q: "Wer kann auf meine Dokumente zugreifen?",
+          a: "Nur berechtigte Benutzer innerhalb Ihres Mandantenkontexts. Zugriffe sind rollenbasiert und nachvollziehbar."
+        },
+        {
+          q: "Werden hochgeladene Dateien geprüft?",
+          a: "Ja. Jeder Upload wird automatisch in einer isolierten Umgebung auf Schadsoftware geprüft, bevor er weiterverarbeitet wird."
+        },
+        {
+          q: "Was passiert bei einem Virusfund?",
+          a: "Die Datei wird blockiert, gekennzeichnet und nicht freigegeben. Administratoren erhalten einen entsprechenden Hinweis."
+        },
+        {
+          q: "Gibt es Audit-Logs?",
+          a: "Ja. Alle sicherheitsrelevanten Aktionen (Login, Zugriff, Löschung) werden protokolliert und sind einsehbar."
+        },
+        {
+          q: "Kann ich Sicherheitsmaßnahmen prüfen?",
+          a: "Ja. Die eingesetzten Mechanismen sind transparent beschrieben und für Audits geeignet."
+        }
+      ]
+    },
     cta: {
       headline: "Bereit für das Upgrade?",
       subheadline: "Schließen Sie sich tausenden Unternehmen an, die SecurePortal für den sicheren Austausch nutzen.",
@@ -92,16 +163,17 @@ const translations = {
   en: {
     nav: {
       features: "Features",
+      security: "Security",
       howItWorks: "How it Works",
       pricing: "Pricing",
       login: "Login",
       getStarted: "Get Started"
     },
     hero: {
-      badge: "Enterprise-Grade Security",
+      badge: "For Companies with High Security Standards",
       title: "Secure Document Exchange for",
       titleHighlight: "Modern Business",
-      subtitle: "The secure portal for companies and entrepreneurs. Manage clients, exchange sensitive contracts, and handle invoices with bank-level encryption.",
+      subtitle: "The secure portal for companies and entrepreneurs. Manage clients, exchange sensitive contracts, and handle invoices with modern, authenticated encryption.",
       ctaPrimary: "Start Free Trial",
       ctaSecondary: "Book Demo",
       trust: "Trusted by 500+ companies"
@@ -112,7 +184,7 @@ const translations = {
       items: [
         {
           title: "AES-256-GCM Encryption",
-          desc: "All files secured with military-grade encryption. Files protected at rest & in transit."
+          desc: "All files secured with AES-256-GCM encryption. Protected at rest & in transit."
         },
         {
           title: "JWT Authentication",
@@ -133,6 +205,66 @@ const translations = {
         {
           title: "Input Validation",
           desc: "Zod-based validation for maximum data integrity. Type-safe schemas and clear error messages."
+        }
+      ]
+    },
+    security: {
+      headline: "How we implement Security",
+      subheadline: "Security is not an afterthought. It is part of the architecture – from the first line of code to operation.",
+      items: [
+        {
+          title: "Encryption as Foundation",
+          desc: "AES-256-GCM for stored data, TLS for transmission, and authenticated encryption against manipulation."
+        },
+        {
+          title: "Access Control & Identities",
+          desc: "2FA (TOTP), short-lived tokens, and strict role-based permissions ensure clear accountability."
+        },
+        {
+          title: "Secure File Upload",
+          desc: "Isolated virus scan for every upload. Infected files are blocked immediately before reaching the system."
+        },
+        {
+          title: "Traceability",
+          desc: "Complete audit logs for login, uploads, and deletions. Every entry with timestamp and context."
+        },
+        {
+          title: "Abuse Protection",
+          desc: "Active protection via rate limiting against brute-force and strict input validation on all interfaces."
+        },
+        {
+          title: "Clear System Separation",
+          desc: "Frontend, backend, scan services, and data storage are strictly separated. One error does not compromise the whole system."
+        }
+      ]
+    },
+    faq: {
+      headline: "Technical FAQ",
+      subheadline: "Answers for critical clients and IT security officers.",
+      items: [
+        {
+          q: "How is my data encrypted?",
+          a: "All data is stored encrypted with AES-256-GCM and transmitted exclusively encrypted (Files at Rest & in Transit)."
+        },
+        {
+          q: "Who can access my documents?",
+          a: "Only authorized users within your client context. Access is role-based and traceable."
+        },
+        {
+          q: "Are uploaded files checked?",
+          a: "Yes. Every upload is automatically checked for malware in an isolated environment before processing."
+        },
+        {
+          q: "What happens if a virus is found?",
+          a: "The file is blocked, flagged, and not released. Administrators receive a notification."
+        },
+        {
+          q: "Are there audit logs?",
+          a: "Yes. All security-relevant actions (login, access, deletion) are logged and viewable."
+        },
+        {
+          q: "Can I verify security measures?",
+          a: "Yes. The mechanisms used are transparently described and suitable for audits."
         }
       ]
     },
@@ -187,6 +319,15 @@ export default function LandingPage() {
     <CheckCircle2 className="h-6 w-6 text-primary" />
   ];
 
+  const securityIcons = [
+    <Lock className="h-6 w-6" />,
+    <Users className="h-6 w-6" />,
+    <FileWarning className="h-6 w-6" />,
+    <Eye className="h-6 w-6" />,
+    <Shield className="h-6 w-6" />,
+    <Layers className="h-6 w-6" />
+  ];
+
   return (
     <div className="min-h-screen bg-background font-sans overflow-x-hidden">
       {/* Navigation */}
@@ -201,6 +342,7 @@ export default function LandingPage() {
             {/* Desktop Nav */}
             <div className="hidden md:flex items-center space-x-8">
               <a href="#features" className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors">{t.nav.features}</a>
+              <a href="#security" className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors">{t.nav.security}</a>
               <a href="#how-it-works" className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors">{t.nav.howItWorks}</a>
               <a href="#pricing" className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors">{t.nav.pricing}</a>
               
@@ -235,6 +377,7 @@ export default function LandingPage() {
           >
             <div className="flex flex-col space-y-4">
               <a href="#features" className="text-base font-medium text-foreground">{t.nav.features}</a>
+              <a href="#security" className="text-base font-medium text-foreground">{t.nav.security}</a>
               <a href="#how-it-works" className="text-base font-medium text-foreground">{t.nav.howItWorks}</a>
               <a href="#pricing" className="text-base font-medium text-foreground">{t.nav.pricing}</a>
               <div className="pt-4 flex flex-col gap-2">
@@ -359,25 +502,72 @@ export default function LandingPage() {
         </div>
       </section>
 
+      {/* Security Architecture Section */}
+      <section id="security" className="py-24 bg-slate-900 text-white relative overflow-hidden">
+        <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-primary/10 rounded-full blur-[120px] pointer-events-none" />
+        
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold mb-6">{t.security.headline}</h2>
+            <p className="text-lg text-slate-300 max-w-2xl">
+              {t.security.subheadline}
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {t.security.items.map((item, idx) => (
+              <div key={idx} className="bg-white/5 border border-white/10 rounded-xl p-6 hover:bg-white/10 transition-colors">
+                <div className="mb-4 text-primary">
+                  {securityIcons[idx]}
+                </div>
+                <h3 className="text-lg font-bold mb-3">{item.title}</h3>
+                <p className="text-slate-400 text-sm leading-relaxed">{item.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ Section */}
+      <section id="faq" className="py-24 bg-background">
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl font-bold mb-4">{t.faq.headline}</h2>
+            <p className="text-muted-foreground">{t.faq.subheadline}</p>
+          </div>
+
+          <Accordion type="single" collapsible className="w-full">
+            {t.faq.items.map((item, idx) => (
+              <AccordionItem key={idx} value={`item-${idx}`}>
+                <AccordionTrigger className="text-left">{item.q}</AccordionTrigger>
+                <AccordionContent className="text-muted-foreground">
+                  {item.a}
+                </AccordionContent>
+              </AccordionItem>
+            ))}
+          </Accordion>
+        </div>
+      </section>
+
       {/* CTA Section */}
-      <section className="py-24 bg-slate-900 text-white relative overflow-hidden">
-        <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-primary/20 rounded-full blur-[100px] pointer-events-none" />
-        <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-accent/20 rounded-full blur-[80px] pointer-events-none" />
+      <section className="py-24 bg-primary/5 relative overflow-hidden">
+        <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-primary/10 rounded-full blur-[100px] pointer-events-none" />
+        <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-accent/10 rounded-full blur-[80px] pointer-events-none" />
         
         <div className="max-w-4xl mx-auto px-4 text-center relative z-10">
-          <h2 className="text-4xl md:text-6xl font-bold mb-8 tracking-tight">{t.cta.headline}</h2>
-          <p className="text-xl text-slate-300 mb-10 max-w-2xl mx-auto">
+          <h2 className="text-4xl md:text-6xl font-bold mb-8 tracking-tight text-foreground">{t.cta.headline}</h2>
+          <p className="text-xl text-muted-foreground mb-10 max-w-2xl mx-auto">
             {t.cta.subheadline}
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-4">
-            <Button size="lg" className="bg-primary hover:bg-primary/90 h-14 px-10 text-lg rounded-full">
+            <Button size="lg" className="bg-primary hover:bg-primary/90 h-14 px-10 text-lg rounded-full text-white">
               {t.cta.primary}
             </Button>
-            <Button size="lg" variant="outline" className="h-14 px-10 text-lg rounded-full border-white/20 hover:bg-white/10 hover:text-white text-white bg-transparent">
+            <Button size="lg" variant="outline" className="h-14 px-10 text-lg rounded-full border-primary/20 hover:bg-primary/5 bg-transparent">
               {t.cta.secondary}
             </Button>
           </div>
-          <p className="mt-6 text-sm text-slate-400">{t.cta.disclaimer}</p>
+          <p className="mt-6 text-sm text-muted-foreground">{t.cta.disclaimer}</p>
         </div>
       </section>
 
