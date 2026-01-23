@@ -18,20 +18,56 @@ import {
   Shield,
   Eye,
   FileWarning,
-  Layers
+  Layers,
+  ChevronDown,
+  ChevronUp
 } from "lucide-react";
-import { 
-  Accordion, 
-  AccordionContent, 
-  AccordionItem, 
-  AccordionTrigger 
-} from "@/components/ui/accordion";
 import { useState } from "react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 
 // Import generated assets
 import heroImage from "@assets/generated_images/secure_digital_document_transfer_visualization_with_padlocks_and_floating_files..png";
 import logoIcon from "@assets/generated_images/minimalist_secure_shield_icon..png";
+
+// Custom Accordion Component to avoid Radix UI issues with React 19
+function SimpleAccordion({ items }: { items: { q: string, a: string }[] }) {
+  const [openIndex, setOpenIndex] = useState<number | null>(null);
+
+  return (
+    <div className="w-full space-y-4">
+      {items.map((item, idx) => (
+        <div key={idx} className="border-b border-border pb-4">
+          <button 
+            onClick={() => setOpenIndex(openIndex === idx ? null : idx)}
+            className="flex w-full items-center justify-between py-2 text-left text-sm font-medium hover:text-primary transition-colors"
+          >
+            {item.q}
+            {openIndex === idx ? (
+              <ChevronUp className="h-4 w-4 text-muted-foreground" />
+            ) : (
+              <ChevronDown className="h-4 w-4 text-muted-foreground" />
+            )}
+          </button>
+          <AnimatePresence>
+            {openIndex === idx && (
+              <motion.div
+                initial={{ height: 0, opacity: 0 }}
+                animate={{ height: "auto", opacity: 1 }}
+                exit={{ height: 0, opacity: 0 }}
+                transition={{ duration: 0.2 }}
+                className="overflow-hidden"
+              >
+                <div className="pt-2 text-sm text-muted-foreground">
+                  {item.a}
+                </div>
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </div>
+      ))}
+    </div>
+  );
+}
 
 // Translation Configuration
 type Language = 'de' | 'en';
@@ -536,16 +572,7 @@ export default function LandingPage() {
             <p className="text-muted-foreground">{t.faq.subheadline}</p>
           </div>
 
-          <Accordion type="single" collapsible className="w-full">
-            {t.faq.items.map((item, idx) => (
-              <AccordionItem key={idx} value={`item-${idx}`}>
-                <AccordionTrigger className="text-left">{item.q}</AccordionTrigger>
-                <AccordionContent className="text-muted-foreground">
-                  {item.a}
-                </AccordionContent>
-              </AccordionItem>
-            ))}
-          </Accordion>
+          <SimpleAccordion items={t.faq.items} />
         </div>
       </section>
 
