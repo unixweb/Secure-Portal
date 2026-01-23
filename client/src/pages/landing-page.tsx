@@ -255,24 +255,24 @@ export default function LandingPage() {
         <div className="absolute bottom-0 left-0 -z-10 w-[500px] h-[500px] bg-accent/5 rounded-full blur-3xl opacity-50 pointer-events-none" />
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
+          <div className="flex flex-col items-center text-center gap-12">
             <motion.div 
               initial="hidden"
               animate="visible"
               variants={fadeIn}
-              className="max-w-2xl"
+              className="max-w-4xl flex flex-col items-center"
             >
-              <div className="inline-flex items-center rounded-full border border-primary/20 bg-primary/5 px-3 py-1 text-sm font-medium text-primary mb-6">
+              <div className="inline-flex items-center rounded-full border border-primary/20 bg-primary/5 px-3 py-1 text-sm font-medium text-primary mb-8">
                 <span className="flex h-2 w-2 rounded-full bg-primary mr-2 animate-pulse"></span>
                 {t.hero.badge}
               </div>
-              <h1 className="text-4xl lg:text-6xl font-bold tracking-tight text-foreground mb-6 leading-[1.1] max-w-4xl text-balance">
-                {t.hero.title} <span className="text-gradient block sm:inline">{t.hero.titleHighlight}</span>
+              <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight text-foreground mb-8 leading-[1.1] max-w-5xl text-balance">
+                {t.hero.title} <span className="text-gradient inline-block">{t.hero.titleHighlight}</span>
               </h1>
-              <p className="text-xl text-muted-foreground mb-8 leading-relaxed">
+              <p className="text-xl text-muted-foreground mb-10 leading-relaxed max-w-2xl mx-auto">
                 {t.hero.subtitle}
               </p>
-              <div className="flex flex-col sm:flex-row gap-4">
+              <div className="flex flex-col sm:flex-row gap-4 mb-12">
                 <Button size="lg" className="bg-primary hover:bg-primary/90 text-white shadow-xl shadow-primary/25 h-12 px-8 text-base">
                   {t.hero.ctaPrimary} <ArrowRight className="ml-2 h-5 w-5" />
                 </Button>
@@ -281,7 +281,7 @@ export default function LandingPage() {
                 </Button>
               </div>
               
-              <div className="mt-10 flex items-center gap-4 text-sm text-muted-foreground">
+              <div className="flex items-center gap-4 text-sm text-muted-foreground">
                 <div className="flex -space-x-2">
                   {[1, 2, 3, 4].map((i) => (
                     <div key={i} className="h-8 w-8 rounded-full border-2 border-background bg-slate-200" />
@@ -292,18 +292,17 @@ export default function LandingPage() {
             </motion.div>
 
             <motion.div 
-              initial={{ opacity: 0, scale: 0.95 }}
-              animate={{ opacity: 1, scale: 1 }}
+              initial={{ opacity: 0, y: 40 }}
+              animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2, duration: 0.8 }}
-              className="relative hidden lg:block"
+              className="relative w-full max-w-5xl mt-8"
             >
               <div className="relative z-10 rounded-2xl overflow-hidden shadow-2xl border border-white/20 glass-card p-2">
                 <img 
                   src={heroImage} 
                   alt="Secure Portal Dashboard" 
-                  className="rounded-xl w-full h-auto object-cover transform hover:scale-[1.02] transition-transform duration-700"
+                  className="rounded-xl w-full h-auto object-cover"
                 />
-                
               </div>
             </motion.div>
           </div>
