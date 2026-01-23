@@ -36,7 +36,7 @@ const translations = {
       getStarted: "Jetzt Starten"
     },
     hero: {
-      badge: "Enterprise-Grade Sicherheit",
+      badge: "Für Unternehmen mit hohen Sicherheitsansprüchen",
       title: "Sicherer Dokumentenaustausch für",
       titleHighlight: "Moderne Unternehmen",
       subtitle: "Das sichere Portal für Firmen und Unternehmer. Verwalten Sie Mandanten, tauschen Sie sensible Verträge aus und bearbeiten Sie Rechnungen mit moderner, authentifizierter Verschlüsselung.",
