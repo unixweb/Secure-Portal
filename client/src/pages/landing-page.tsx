@@ -266,8 +266,8 @@ export default function LandingPage() {
                 <span className="flex h-2 w-2 rounded-full bg-primary mr-2 animate-pulse"></span>
                 {t.hero.badge}
               </div>
-              <h1 className="text-5xl lg:text-7xl font-bold tracking-tight text-foreground mb-6 leading-[1.1]">
-                {t.hero.title} <span className="text-gradient">{t.hero.titleHighlight}</span>
+              <h1 className="text-4xl lg:text-6xl font-bold tracking-tight text-foreground mb-6 leading-[1.1] max-w-4xl text-balance">
+                {t.hero.title} <span className="text-gradient block sm:inline">{t.hero.titleHighlight}</span>
               </h1>
               <p className="text-xl text-muted-foreground mb-8 leading-relaxed">
                 {t.hero.subtitle}
