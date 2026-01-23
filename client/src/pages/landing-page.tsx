@@ -547,9 +547,9 @@ export default function LandingPage() {
         <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-primary/10 rounded-full blur-[120px] pointer-events-none" />
         
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="mb-16">
+          <div className="mb-16 text-center">
             <h2 className="text-3xl md:text-4xl font-bold mb-6">{t.security.headline}</h2>
-            <p className="text-lg text-slate-300 max-w-2xl">
+            <p className="text-lg text-slate-300 max-w-2xl mx-auto">
               {t.security.subheadline}
             </p>
           </div>
