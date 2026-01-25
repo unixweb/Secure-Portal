@@ -1,8 +1,155 @@
 import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
-import { Check, X, Server, Cloud, Shield, ArrowRight, HelpCircle } from "lucide-react";
+import { Check, Cloud, Shield, Server, Globe } from "lucide-react";
+import { useState } from "react";
+
+type Language = 'de' | 'en';
+
+const translations = {
+  de: {
+    nav: {
+      back: "Zurück zur Startseite",
+      getStarted: "Jetzt Starten"
+    },
+    header: {
+      title: "Einfache, transparente Preise",
+      subtitle: "Wählen Sie das Modell, das zu Ihren Sicherheitsanforderungen passt. Von sofortigem Cloud-SaaS bis zur vollen On-Premise-Kontrolle."
+    },
+    plans: {
+      starter: {
+        name: "Cloud Starter",
+        desc: "Perfekt für Freelancer & kleine Teams.",
+        price: "29€",
+        period: "/Monat",
+        cta: "Kostenlos Testen",
+        features: [
+          "Sicheres Cloud Hosting",
+          "10 GB Speicher",
+          "Bis zu 5 Benutzer",
+          "Standard Verschlüsselung",
+          "Email Support"
+        ]
+      },
+      business: {
+        tag: "BELIEBT",
+        name: "Cloud Business",
+        desc: "Für wachsende Unternehmen mit Compliance-Anforderungen.",
+        price: "99€",
+        period: "/Monat",
+        cta: "Jetzt Starten",
+        features: [
+          "Sicheres Cloud Hosting",
+          "1 TB Speicher",
+          "Unbegrenzte Benutzer",
+          "Eigenes Branding",
+          "Priorisierter Support",
+          "Audit Logs"
+        ]
+      },
+      enterprise: {
+        name: "On-Premise",
+        desc: "Volle Kontrolle für Enterprise-Compliance.",
+        price: "Individuell",
+        subPrice: "Ab 499€/Monat Wartung",
+        cta: "Vertrieb Kontaktieren",
+        features: [
+          "Installation auf Ihrem Server",
+          "Ihre Infrastruktur",
+          "Volle Datenkontrolle",
+          "Individuelles SLA",
+          "White Labeling",
+          "Dedizierter Ansprechpartner"
+        ]
+      }
+    },
+    comparison: {
+      saas: {
+        title: "Warum Cloud SaaS?",
+        desc: "Der einfachste Weg zum Start. Wir kümmern uns um Infrastruktur, Sicherheitsupdates und Backups. Sie loggen sich einfach ein und arbeiten. Perfekt für Teams ohne eigene IT-Abteilung."
+      },
+      onprem: {
+        title: "Warum On-Premise?",
+        desc: "Notwendig für strikte Compliance (z.B. Banken, Gesundheitswesen). Sie hosten die Software auf Ihren eigenen Servern. Wir liefern Updates und Support, aber die Daten verlassen niemals Ihre Kontrolle."
+      }
+    }
+  },
+  en: {
+    nav: {
+      back: "Back to Home",
+      getStarted: "Get Started"
+    },
+    header: {
+      title: "Simple, Transparent Pricing",
+      subtitle: "Choose the deployment model that fits your security needs. From instant Cloud SaaS to full On-Premise control."
+    },
+    plans: {
+      starter: {
+        name: "Cloud Starter",
+        desc: "Perfect for freelancers & small teams.",
+        price: "€29",
+        period: "/mo",
+        cta: "Start Free Trial",
+        features: [
+          "Secure Cloud Hosting",
+          "10 GB Storage",
+          "Up to 5 Users",
+          "Standard Encryption",
+          "Email Support"
+        ]
+      },
+      business: {
+        tag: "MOST POPULAR",
+        name: "Cloud Business",
+        desc: "For growing companies requiring compliance.",
+        price: "€99",
+        period: "/mo",
+        cta: "Get Started",
+        features: [
+          "Secure Cloud Hosting",
+          "1 TB Storage",
+          "Unlimited Users",
+          "Custom Branding",
+          "Priority Support",
+          "Audit Logs"
+        ]
+      },
+      enterprise: {
+        name: "On-Premise",
+        desc: "Full control for enterprise compliance.",
+        price: "Custom",
+        subPrice: "Starting from €499/mo maintenance",
+        cta: "Contact Sales",
+        features: [
+          "Self-Hosted Installation",
+          "Your Infrastructure",
+          "Full Data Control",
+          "Custom SLA",
+          "White Labeling",
+          "Dedicated Account Manager"
+        ]
+      }
+    },
+    comparison: {
+      saas: {
+        title: "Why choose Cloud SaaS?",
+        desc: "The easiest way to get started. We manage the infrastructure, security updates, and backups. You just log in and work. Perfect for teams that want zero IT overhead."
+      },
+      onprem: {
+        title: "Why choose On-Premise?",
+        desc: "Required for strict compliance (e.g., banking, healthcare). You host the software on your own servers (or private cloud). We provide the software updates and support, but data never leaves your control."
+      }
+    }
+  }
+};
 
 export default function PricingPage() {
+  const [lang, setLang] = useState<Language>('de');
+  const t = translations[lang];
+
+  const toggleLang = () => {
+    setLang(l => l === 'de' ? 'en' : 'de');
+  };
+
   return (
     <div className="min-h-screen bg-slate-50 font-sans">
       {/* Simple Header */}
@@ -14,10 +161,14 @@ export default function PricingPage() {
             </a>
           </Link>
           <div className="flex items-center gap-4">
+            <button onClick={toggleLang} className="flex items-center gap-1 text-sm font-medium text-muted-foreground hover:text-primary transition-colors mr-2">
+              <Globe size={16} />
+              {lang.toUpperCase()}
+            </button>
             <Link href="/">
-              <a className="text-sm font-medium text-muted-foreground hover:text-primary">Back to Home</a>
+              <a className="text-sm font-medium text-muted-foreground hover:text-primary hidden sm:inline-block">{t.nav.back}</a>
             </Link>
-            <Button size="sm">Get Started</Button>
+            <Button size="sm">{t.nav.getStarted}</Button>
           </div>
         </div>
       </nav>
@@ -25,11 +176,10 @@ export default function PricingPage() {
       <main className="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
         <div className="text-center max-w-3xl mx-auto mb-16">
           <h1 className="text-4xl font-bold tracking-tight text-foreground mb-4">
-            Simple, Transparent Pricing
+            {t.header.title}
           </h1>
           <p className="text-xl text-muted-foreground">
-            Choose the deployment model that fits your security needs. 
-            From instant Cloud SaaS to full On-Premise control.
+            {t.header.subtitle}
           </p>
         </div>
 
@@ -40,48 +190,43 @@ export default function PricingPage() {
               <div className="w-12 h-12 bg-blue-50 rounded-lg flex items-center justify-center mb-4">
                 <Cloud className="h-6 w-6 text-blue-600" />
               </div>
-              <h3 className="text-xl font-semibold text-foreground">Cloud Starter</h3>
-              <p className="text-sm text-muted-foreground mt-2">Perfect for freelancers & small teams.</p>
+              <h3 className="text-xl font-semibold text-foreground">{t.plans.starter.name}</h3>
+              <p className="text-sm text-muted-foreground mt-2">{t.plans.starter.desc}</p>
             </div>
             <div className="mb-8">
-              <span className="text-4xl font-bold text-foreground">€29</span>
-              <span className="text-muted-foreground">/mo</span>
+              <span className="text-4xl font-bold text-foreground">{t.plans.starter.price}</span>
+              <span className="text-muted-foreground">{t.plans.starter.period}</span>
             </div>
             <ul className="space-y-4 mb-8 flex-1">
-              <FeatureItem text="Secure Cloud Hosting" />
-              <FeatureItem text="10 GB Storage" />
-              <FeatureItem text="Up to 5 Users" />
-              <FeatureItem text="Standard Encryption" />
-              <FeatureItem text="Email Support" />
+              {t.plans.starter.features.map((f, i) => (
+                <FeatureItem key={i} text={f} />
+              ))}
             </ul>
-            <Button variant="outline" className="w-full">Start Free Trial</Button>
+            <Button variant="outline" className="w-full">{t.plans.starter.cta}</Button>
           </div>
 
           {/* Card 2: Cloud Pro (SaaS) - Highlighted */}
           <div className="bg-slate-900 rounded-2xl shadow-xl border border-slate-800 p-8 flex flex-col relative transform md:-translate-y-4">
             <div className="absolute top-0 right-0 bg-primary text-white text-xs font-bold px-3 py-1 rounded-bl-lg rounded-tr-lg">
-              MOST POPULAR
+              {t.plans.business.tag}
             </div>
             <div className="mb-6">
               <div className="w-12 h-12 bg-blue-500/20 rounded-lg flex items-center justify-center mb-4">
                 <Shield className="h-6 w-6 text-blue-400" />
               </div>
-              <h3 className="text-xl font-semibold text-white">Cloud Business</h3>
-              <p className="text-sm text-slate-400 mt-2">For growing companies requiring compliance.</p>
+              <h3 className="text-xl font-semibold text-white">{t.plans.business.name}</h3>
+              <p className="text-sm text-slate-400 mt-2">{t.plans.business.desc}</p>
             </div>
             <div className="mb-8">
-              <span className="text-4xl font-bold text-white">€99</span>
-              <span className="text-slate-400">/mo</span>
+              <span className="text-4xl font-bold text-white">{t.plans.business.price}</span>
+              <span className="text-slate-400">{t.plans.business.period}</span>
             </div>
             <ul className="space-y-4 mb-8 flex-1 text-slate-300">
-              <FeatureItem text="Secure Cloud Hosting" dark />
-              <FeatureItem text="1 TB Storage" dark />
-              <FeatureItem text="Unlimited Users" dark />
-              <FeatureItem text="Custom Branding" dark />
-              <FeatureItem text="Priority Support" dark />
-              <FeatureItem text="Audit Logs" dark />
+              {t.plans.business.features.map((f, i) => (
+                <FeatureItem key={i} text={f} dark />
+              ))}
             </ul>
-            <Button className="w-full bg-primary hover:bg-primary/90 text-white">Get Started</Button>
+            <Button className="w-full bg-primary hover:bg-primary/90 text-white">{t.plans.business.cta}</Button>
           </div>
 
           {/* Card 3: On-Premise (Self-Hosted) */}
@@ -90,24 +235,21 @@ export default function PricingPage() {
               <div className="w-12 h-12 bg-slate-100 rounded-lg flex items-center justify-center mb-4">
                 <Server className="h-6 w-6 text-slate-700" />
               </div>
-              <h3 className="text-xl font-semibold text-foreground">On-Premise</h3>
-              <p className="text-sm text-muted-foreground mt-2">Full control for enterprise compliance.</p>
+              <h3 className="text-xl font-semibold text-foreground">{t.plans.enterprise.name}</h3>
+              <p className="text-sm text-muted-foreground mt-2">{t.plans.enterprise.desc}</p>
             </div>
             <div className="mb-8">
               <div className="flex items-baseline gap-1">
-                <span className="text-2xl font-bold text-foreground">Custom</span>
+                <span className="text-2xl font-bold text-foreground">{t.plans.enterprise.price}</span>
               </div>
-              <p className="text-xs text-muted-foreground mt-1">Starting from €499/mo maintenance</p>
+              <p className="text-xs text-muted-foreground mt-1">{t.plans.enterprise.subPrice}</p>
             </div>
             <ul className="space-y-4 mb-8 flex-1">
-              <FeatureItem text="Self-Hosted Installation" />
-              <FeatureItem text="Your Infrastructure" />
-              <FeatureItem text="Full Data Control" />
-              <FeatureItem text="Custom SLA" />
-              <FeatureItem text="White Labeling" />
-              <FeatureItem text="Dedicated Account Manager" />
+              {t.plans.enterprise.features.map((f, i) => (
+                <FeatureItem key={i} text={f} />
+              ))}
             </ul>
-            <Button variant="outline" className="w-full">Contact Sales</Button>
+            <Button variant="outline" className="w-full">{t.plans.enterprise.cta}</Button>
           </div>
         </div>
 
@@ -117,19 +259,19 @@ export default function PricingPage() {
              <div>
                <h3 className="text-lg font-bold mb-4 flex items-center gap-2">
                  <Cloud className="h-5 w-5 text-blue-600" />
-                 Why choose Cloud SaaS?
+                 {t.comparison.saas.title}
                </h3>
                <p className="text-muted-foreground text-sm leading-relaxed">
-                 The easiest way to get started. We manage the infrastructure, security updates, and backups. You just log in and work. Perfect for teams that want zero IT overhead.
+                 {t.comparison.saas.desc}
                </p>
              </div>
              <div>
                <h3 className="text-lg font-bold mb-4 flex items-center gap-2">
                  <Server className="h-5 w-5 text-slate-700" />
-                 Why choose On-Premise?
+                 {t.comparison.onprem.title}
                </h3>
                <p className="text-muted-foreground text-sm leading-relaxed">
-                 Required for strict compliance (e.g., banking, healthcare). You host the software on your own servers (or private cloud). We provide the software updates and support, but data never leaves your control.
+                 {t.comparison.onprem.desc}
                </p>
              </div>
           </div>
