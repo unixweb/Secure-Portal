@@ -20,7 +20,9 @@ import {
   FileWarning,
   Layers,
   ChevronDown,
-  ChevronUp
+  ChevronUp,
+  Share2,
+  Cloud
 } from "lucide-react";
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
@@ -151,6 +153,27 @@ const translations = {
         }
       ]
     },
+    howItWorks: {
+      headline: "So funktioniert's",
+      subheadline: "Einfach, sicher und nachvollziehbar. In drei Schritten zum sicheren Datenaustausch.",
+      steps: [
+        {
+          title: "Upload",
+          desc: "Dateien per Drag & Drop hochladen. Automatischer Virenscan und Verschlüsselung im Browser.",
+          code: "encrypting file... 100%"
+        },
+        {
+          title: "Sicherheit",
+          desc: "Datei wird mit AES-256 verschlüsselt auf deutschen Servern gespeichert. Schlüssel bleiben getrennt.",
+          code: "AES-256-GCM verified"
+        },
+        {
+          title: "Teilen",
+          desc: "Sicheren Link generieren (optional mit Passwort & Ablaufdatum) und an den Empfänger senden.",
+          code: "link generated: secure.portal/..."
+        }
+      ]
+    },
     faq: {
       headline: "Technische FAQ",
       subheadline: "Antworten für kritische Kunden und IT-Sicherheitsbeauftragte.",
@@ -271,6 +294,27 @@ const translations = {
         {
           title: "Clear System Separation",
           desc: "Frontend, backend, scan services, and data storage are strictly separated. One error does not compromise the whole system."
+        }
+      ]
+    },
+    howItWorks: {
+      headline: "How it Works",
+      subheadline: "Simple, secure, and traceable. Secure data exchange in three steps.",
+      steps: [
+        {
+          title: "Upload",
+          desc: "Upload files via Drag & Drop. Automatic virus scan and client-side encryption.",
+          code: "encrypting file... 100%"
+        },
+        {
+          title: "Security",
+          desc: "File is stored encrypted with AES-256 on secure servers. Keys remain separate.",
+          code: "AES-256-GCM verified"
+        },
+        {
+          title: "Share",
+          desc: "Generate secure link (optional with password & expiration) and send to recipient.",
+          code: "link generated: secure.portal/..."
         }
       ]
     },
@@ -535,6 +579,63 @@ export default function LandingPage() {
               </motion.div>
             ))}
           </motion.div>
+        </div>
+      </section>
+
+      {/* How It Works Section */}
+      <section id="how-it-works" className="py-24 bg-slate-50 relative overflow-hidden">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center max-w-3xl mx-auto mb-20">
+            <h2 className="text-3xl md:text-5xl font-bold mb-6 text-foreground">{t.howItWorks.headline}</h2>
+            <p className="text-lg text-muted-foreground">
+              {t.howItWorks.subheadline}
+            </p>
+          </div>
+
+          <div className="relative">
+            {/* Connecting Line (Desktop) */}
+            <div className="hidden md:block absolute top-12 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-primary/30 to-transparent" />
+            
+            <div className="grid md:grid-cols-3 gap-12 relative z-10">
+              {t.howItWorks.steps.map((step, idx) => (
+                <motion.div 
+                  key={idx}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ delay: idx * 0.2 }}
+                  viewport={{ once: true }}
+                  className="flex flex-col items-center text-center"
+                >
+                  <div className="w-24 h-24 rounded-2xl bg-white shadow-xl border border-border flex items-center justify-center mb-8 relative z-20 group">
+                    <div className="absolute inset-0 bg-primary/5 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity" />
+                    {idx === 0 && <Cloud className="h-10 w-10 text-primary" />}
+                    {idx === 1 && <ShieldCheck className="h-10 w-10 text-primary" />}
+                    {idx === 2 && <Share2 className="h-10 w-10 text-primary" />}
+                    
+                    {/* Step Number Badge */}
+                    <div className="absolute -top-3 -right-3 w-8 h-8 rounded-full bg-slate-900 text-white flex items-center justify-center font-bold text-sm border-4 border-slate-50">
+                      {idx + 1}
+                    </div>
+                  </div>
+                  
+                  <h3 className="text-xl font-bold mb-3">{step.title}</h3>
+                  <p className="text-muted-foreground mb-6 max-w-xs">{step.desc}</p>
+                  
+                  {/* Tech Detail Code Snippet */}
+                  <div className="w-full max-w-xs bg-slate-900 rounded-lg p-3 text-left shadow-lg">
+                    <div className="flex gap-1.5 mb-2">
+                      <div className="w-2 h-2 rounded-full bg-red-500" />
+                      <div className="w-2 h-2 rounded-full bg-yellow-500" />
+                      <div className="w-2 h-2 rounded-full bg-green-500" />
+                    </div>
+                    <code className="text-xs font-mono text-green-400 block">
+                      &gt; {step.code}
+                    </code>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          </div>
         </div>
       </section>
 
