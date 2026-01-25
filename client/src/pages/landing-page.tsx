@@ -380,7 +380,9 @@ export default function LandingPage() {
               <a href="#features" className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors">{t.nav.features}</a>
               <a href="#security" className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors">{t.nav.security}</a>
               <a href="#how-it-works" className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors">{t.nav.howItWorks}</a>
-              <a href="#pricing" className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors">{t.nav.pricing}</a>
+              <Link href="/pricing">
+                <a className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors">{t.nav.pricing}</a>
+              </Link>
               
               <button onClick={toggleLang} className="flex items-center gap-1 text-sm font-medium text-muted-foreground hover:text-primary transition-colors">
                 <Globe size={16} />
