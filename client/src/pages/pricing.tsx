@@ -157,7 +157,7 @@ export default function PricingPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
           <Link href="/">
             <a className="flex items-center gap-2">
-              <span className="text-xl font-bold text-foreground tracking-tight font-heading">SecurePortal</span>
+              <span className="text-xl font-bold text-foreground tracking-tight font-heading">SafeDocs Portal</span>
             </a>
           </Link>
           <div className="flex items-center gap-4">

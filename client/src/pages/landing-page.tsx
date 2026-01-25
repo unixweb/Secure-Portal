@@ -123,7 +123,7 @@ const translations = {
     },
     security: {
       headline: "Wie wir Sicherheit umsetzen",
-      subheadline: "Sicherheit ist bei SecurePortal kein nachträgliches Feature. Sie ist Bestandteil der Architektur – von der ersten Zeile Code bis zum Betrieb.",
+      subheadline: "Sicherheit ist bei SafeDocs Portal kein nachträgliches Feature. Sie ist Bestandteil der Architektur – von der ersten Zeile Code bis zum Betrieb.",
       items: [
         {
           title: "Verschlüsselung als Fundament",
@@ -183,7 +183,7 @@ const translations = {
     },
     cta: {
       headline: "Bereit für das Upgrade?",
-      subheadline: "Schließen Sie sich tausenden Unternehmen an, die SecurePortal für den sicheren Austausch nutzen.",
+      subheadline: "Schließen Sie sich tausenden Unternehmen an, die SafeDocs Portal für den sicheren Austausch nutzen.",
       primary: "Kostenlos Starten",
       secondary: "Vertrieb Kontaktieren",
       disclaimer: "Keine Kreditkarte nötig · 14 Tage testen · Jederzeit kündbar"
@@ -306,7 +306,7 @@ const translations = {
     },
     cta: {
       headline: "Ready to upgrade your client experience?",
-      subheadline: "Join thousands of businesses using SecurePortal to safely exchange millions of documents every month.",
+      subheadline: "Join thousands of businesses using SafeDocs Portal to safely exchange millions of documents every month.",
       primary: "Get Started for Free",
       secondary: "Contact Sales",
       disclaimer: "No credit card required · 14-day free trial · Cancel anytime"
@@ -371,8 +371,8 @@ export default function LandingPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             <div className="flex items-center gap-2">
-              <img src={logoIcon} alt="SecurePortal Logo" className="h-8 w-8 object-contain" />
-              <span className="text-xl font-bold text-foreground tracking-tight font-heading">SecurePortal</span>
+              <img src={logoIcon} alt="SafeDocs Portal Logo" className="h-8 w-8 object-contain" />
+              <span className="text-xl font-bold text-foreground tracking-tight font-heading">SafeDocs Portal</span>
             </div>
             
             {/* Desktop Nav */}
