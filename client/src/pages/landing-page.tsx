@@ -27,7 +27,7 @@ import { motion, AnimatePresence } from "framer-motion";
 
 // Import generated assets
 import heroImage from "@assets/generated_images/secure_digital_document_transfer_visualization_with_padlocks_and_floating_files..png";
-import logoIcon from "@assets/generated_images/minimalist_secure_shield_icon..png";
+import logoIcon from "@assets/favicon_1769356808358.png";
 
 // Custom Accordion Component to avoid Radix UI issues with React 19
 function SimpleAccordion({ items }: { items: { q: string, a: string }[] }) {
