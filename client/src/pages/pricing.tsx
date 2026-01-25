@@ -21,7 +21,7 @@ const translations = {
         desc: "Perfekt für Freelancer & kleine Teams.",
         price: "29€",
         period: "/Monat",
-        cta: "Kostenlos Testen",
+        cta: "14 Tage kostenlos testen",
         features: [
           "Sicheres Cloud Hosting",
           "10 GB Speicher",
@@ -88,7 +88,7 @@ const translations = {
         desc: "Perfect for freelancers & small teams.",
         price: "€29",
         period: "/mo",
-        cta: "Start Free Trial",
+        cta: "Start 14-day Free Trial",
         features: [
           "Secure Cloud Hosting",
           "10 GB Storage",
