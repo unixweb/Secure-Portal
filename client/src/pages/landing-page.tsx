@@ -705,8 +705,8 @@ export default function LandingPage() {
           <div className="grid md:grid-cols-4 gap-12 mb-12">
             <div className="col-span-1 md:col-span-1">
               <div className="flex items-center gap-2 mb-4">
-                <img src={logoIcon} alt="SecurePortal Logo" className="h-6 w-6 object-contain" />
-                <span className="text-lg font-bold font-heading">SecurePortal</span>
+                <img src={logoIcon} alt="SafeDocs Portal Logo" className="h-6 w-6 object-contain" />
+                <span className="text-lg font-bold font-heading">SafeDocs Portal</span>
               </div>
               <p className="text-muted-foreground text-sm leading-relaxed">
                 {t.footer.desc}
@@ -742,7 +742,7 @@ export default function LandingPage() {
           </div>
           
           <div className="border-t border-border pt-8 text-center text-sm text-muted-foreground">
-            <p>&copy; {new Date().getFullYear()} SecurePortal. {t.footer.rights}</p>
+            <p>&copy; {new Date().getFullYear()} SafeDocs Portal. {t.footer.rights}</p>
           </div>
         </div>
       </footer>
