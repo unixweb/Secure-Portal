@@ -155,6 +155,11 @@ export default function PricingPage() {
   };
 
   const handleCheckout = (planName: string, price: string) => {
+    if (planName === "Cloud Starter" || planName === "Cloud Starter") {
+      window.open("https://buy.stripe.com/test_00wdR9cIjcjie7C4xu1VK00", "_blank");
+      return;
+    }
+
     toast({
       title: "Checkout Simulation",
       description: `Redirecting to Stripe Checkout for ${planName} (${price})...`,
