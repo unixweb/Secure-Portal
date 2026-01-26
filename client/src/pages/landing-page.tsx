@@ -716,7 +716,7 @@ export default function LandingPage() {
                     </div>
                     
                     <h3 className="text-xl font-bold mb-3">{step.title}</h3>
-                    <p className="text-muted-foreground mb-6 max-w-xs">{step.desc}</p>
+                    <p className="text-muted-foreground mb-6 max-w-xs min-h-[5rem] flex items-center justify-center">{step.desc}</p>
                     
                     {/* Tech Detail Code Snippet */}
                     <div className="w-full max-w-xs bg-slate-900 rounded-lg p-3 text-left shadow-lg">
