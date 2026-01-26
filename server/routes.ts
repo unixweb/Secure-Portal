@@ -40,7 +40,7 @@ export async function registerRoutes(
         email: "info@safedocsportal.com" 
       };
       sendSmtpEmail.to = [{ 
-        email: "info@safedocsportal.com", 
+        email: "jh@unixweb.de", 
         name: "SafeDocs Team" 
       }];
       sendSmtpEmail.replyTo = { 
