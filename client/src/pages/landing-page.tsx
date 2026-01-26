@@ -263,7 +263,7 @@ const translations = {
     },
     features: {
       headline: "Everything you need to manage documents securely",
-      subheadline: "Built for clients, invoices, and sensitive contracts. Experience the new standard in secure communication.",
+      subheadline: "Built for customers, invoices, and sensitive contracts. Experience the new standard in secure communication.",
       items: [
         {
           title: "AES-256-GCM Encryption",
@@ -365,7 +365,7 @@ const translations = {
     },
     faq: {
       headline: "Technical FAQ",
-      subheadline: "Answers for critical clients and IT security officers.",
+      subheadline: "Answers for critical customers and IT security officers.",
       items: [
         {
           q: "How is my data encrypted?",
@@ -394,7 +394,7 @@ const translations = {
       ]
     },
     cta: {
-      headline: "Ready to upgrade your client experience?",
+      headline: "Ready for the upgrade?",
       subheadline: "Join thousands of businesses using SafeDocs Portal to safely exchange millions of documents every month.",
       primary: "Get Started for Free",
       secondary: "Contact Sales",
