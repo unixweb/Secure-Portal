@@ -153,12 +153,12 @@ export default function PricingPage() {
 
   const handleCheckout = (planName: string, price: string) => {
     if (planName === "Cloud Starter") {
-      window.open("https://buy.stripe.com/test_00wdR9cIjcjie7C4xu1VK00", "_blank");
+      window.open("https://buy.stripe.com/9B6dR894Hbpa6lY3SAc7u00", "_blank");
       return;
     }
 
     if (planName === "Cloud Business") {
-      window.open("https://buy.stripe.com/test_14AbJ15fRerqd3ye841VK01", "_blank");
+      window.open("https://buy.stripe.com/4gM3cu80D78U5hU4WEc7u02", "_blank");
       return;
     }
 
