@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
-import { useState } from "react";
+import { useState, useId } from "react";
 import { useToast } from "@/hooks/use-toast";
 
 interface EnterpriseContactModalProps {
@@ -23,15 +23,19 @@ export function EnterpriseContactModal({
 }: EnterpriseContactModalProps) {
   const { toast } = useToast();
   const [loading, setLoading] = useState(false);
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [message, setMessage] = useState("");
+  const formId = useId();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
     
     const formData = {
-      name: (document.getElementById('name') as HTMLInputElement).value,
-      email: (document.getElementById('email') as HTMLInputElement).value,
-      message: (document.getElementById('message') as HTMLTextAreaElement).value,
+      name,
+      email,
+      message,
       subject: `Anfrage via SafeDocs Portal: ${title}`
     };
 
@@ -51,6 +55,9 @@ export function EnterpriseContactModal({
           title: "Anfrage gesendet!",
           description: "Wir haben Ihre Nachricht erhalten und melden uns in Kürze.",
         });
+        setName("");
+        setEmail("");
+        setMessage("");
         onOpenChange(false);
       } else {
         throw new Error(data.error || 'Fehler beim Senden');
@@ -77,20 +84,35 @@ export function EnterpriseContactModal({
         </DialogHeader>
         <form onSubmit={handleSubmit} className="grid gap-4 py-4">
           <div className="grid gap-2">
-            <Label htmlFor="name">Name / Firma</Label>
-            <Input id="name" required placeholder="Muster GmbH" />
+            <Label htmlFor={`${formId}-name`}>Name / Firma</Label>
+            <Input 
+              id={`${formId}-name`} 
+              required 
+              placeholder="Muster GmbH" 
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+            />
           </div>
           <div className="grid gap-2">
-            <Label htmlFor="email">E-Mail</Label>
-            <Input id="email" type="email" required placeholder="kontakt@firma.de" />
+            <Label htmlFor={`${formId}-email`}>E-Mail</Label>
+            <Input 
+              id={`${formId}-email`} 
+              type="email" 
+              required 
+              placeholder="kontakt@firma.de" 
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
           </div>
           <div className="grid gap-2">
-            <Label htmlFor="message">Nachricht</Label>
+            <Label htmlFor={`${formId}-message`}>Nachricht</Label>
             <Textarea 
-              id="message" 
+              id={`${formId}-message`} 
               required 
               placeholder="Ihre Nachricht an uns..." 
               className="min-h-[100px]"
+              value={message}
+              onChange={(e) => setMessage(e.target.value)}
             />
           </div>
           <DialogFooter>
