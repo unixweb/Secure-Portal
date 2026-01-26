@@ -238,6 +238,10 @@ const translations = {
       secondary: "Vertrieb Kontaktieren",
       disclaimer: "Keine Kreditkarte nötig · 14 Tage testen · Jederzeit kündbar"
     },
+    trust: {
+      headline: "Vertraut von Unternehmen aus",
+      industries: ["Finanzdienstleistung", "Beratung", "IT & Technologie", "Gesundheitswesen"]
+    },
     footer: {
       desc: "Sicherer Dokumentenaustausch für moderne Unternehmen. Gebaut für Vertrauen, Geschwindigkeit und Compliance.",
       product: "Produkt",
@@ -401,6 +405,10 @@ const translations = {
       primary: "Get Started for Free",
       secondary: "Contact Sales",
       disclaimer: "No credit card required · 14-day free trial · Cancel anytime"
+    },
+    trust: {
+      headline: "Trusted by Companies in",
+      industries: ["Financial Services", "Consulting", "IT & Technology", "Healthcare"]
     },
     footer: {
       desc: "Secure document exchange for the modern enterprise. Built for trust, speed, and compliance.",
@@ -604,11 +612,10 @@ export default function LandingPage() {
       {/* Trust Section */}
       <section className="py-10 border-y border-border/40 bg-slate-50/50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <p className="text-sm font-semibold text-muted-foreground mb-8 uppercase tracking-wider">Trusted by Industry Leaders</p>
-          <div className="flex flex-wrap justify-center gap-8 md:gap-16 opacity-60 grayscale hover:grayscale-0 transition-all duration-500">
-            {/* Mock Logos */}
-            {['Acme Corp', 'GlobalBank', 'TechFlow', 'SecureChain', 'DataGuard'].map((logo) => (
-              <span key={logo} className="text-xl md:text-2xl font-bold font-heading text-slate-400">{logo}</span>
+          <p className="text-sm font-semibold text-muted-foreground mb-8 uppercase tracking-wider">{t.trust.headline}</p>
+          <div className="flex flex-wrap justify-center gap-8 md:gap-16">
+            {t.trust.industries.map((industry) => (
+              <span key={industry} className="text-xl md:text-2xl font-bold font-heading text-slate-500">{industry}</span>
             ))}
           </div>
         </div>
