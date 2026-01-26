@@ -231,8 +231,9 @@ const translations = {
       ]
     },
     cta: {
-      headline: "Bereit für den Technologiewechsel?",
-      subheadline: "Die ideale Lösung für Steuerberater, Kanzleien, Rechtsanwälte, Notare, IT-Dienstleister und KMU mit sensiblen Daten. Ersetzen Sie unsichere E-Mail-Anhänge durch modernen, geschützten Datenaustausch.",
+      headline: "Bereit, vertrauliche Daten",
+      headlineBold: "digital sicher zu übertragen – so, wie Sie es sich schon immer gewünscht haben?",
+      subheadline: "Die ideale Lösung für Steuerberater, Kanzleien, Rechtsanwälte, Notare, IT-Dienstleister und KMU mit sensiblen Daten.",
       primary: "Kostenlos Starten",
       secondary: "Vertrieb Kontaktieren",
       disclaimer: "Keine Kreditkarte nötig · 14 Tage testen · Jederzeit kündbar"
@@ -396,8 +397,9 @@ const translations = {
       ]
     },
     cta: {
-      headline: "Ready for the technology switch?",
-      subheadline: "The ideal solution for tax advisors, law firms, lawyers, notaries, IT service providers, and SMEs with sensitive data. Replace insecure email attachments with modern, secure document exchange.",
+      headline: "Ready to transfer confidential data",
+      headlineBold: "digitally and securely – just the way you always wanted?",
+      subheadline: "The ideal solution for tax advisors, law firms, lawyers, notaries, IT service providers, and SMEs with sensitive data.",
       primary: "Get Started for Free",
       secondary: "Contact Sales",
       disclaimer: "No credit card required · 14-day free trial · Cancel anytime"
@@ -779,7 +781,9 @@ export default function LandingPage() {
         <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-accent/10 rounded-full blur-[80px] pointer-events-none" />
         
         <div className="max-w-4xl mx-auto px-4 text-center relative z-10">
-          <h2 className="text-4xl md:text-6xl font-bold mb-8 tracking-tight text-foreground">{t.cta.headline}</h2>
+          <h2 className="text-4xl md:text-5xl font-bold mb-8 tracking-tight text-foreground leading-tight">
+            {t.cta.headline} <span className="text-primary block mt-2">{t.cta.headlineBold}</span>
+          </h2>
           <p className="text-xl text-muted-foreground mb-10 max-w-2xl mx-auto">
             {t.cta.subheadline}
           </p>
