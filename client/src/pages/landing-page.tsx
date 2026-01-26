@@ -31,6 +31,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 import { useLanguage } from "@/lib/language-context";
+import { EnterpriseContactModal } from "@/components/enterprise-contact-modal"; // Import Contact Modal
 
 // Import generated assets
 import heroImage from "@assets/generated_images/secure_digital_document_transfer_visualization_with_padlocks_and_floating_files..png";
@@ -417,6 +418,7 @@ export default function LandingPage() {
   const { language: lang, toggleLanguage: toggleLang } = useLanguage();
   const [activeFlow, setActiveFlow] = useState<'firmToClient' | 'clientToFirm'>('firmToClient');
   const [, setLocation] = useLocation();
+  const [demoOpen, setDemoOpen] = useState(false); // Demo Modal State
 
   const t = translations[lang];
 
@@ -563,7 +565,12 @@ export default function LandingPage() {
                 >
                   {t.hero.ctaPrimary} <ArrowRight className="ml-2 h-5 w-5" />
                 </Button>
-                <Button size="lg" variant="outline" className="h-12 px-8 text-base border-primary/20 text-primary hover:bg-primary/5">
+                <Button 
+                  size="lg" 
+                  variant="outline" 
+                  className="h-12 px-8 text-base border-primary/20 text-primary hover:bg-primary/5"
+                  onClick={() => setDemoOpen(true)}
+                >
                   {t.hero.ctaSecondary}
                 </Button>
               </div>
@@ -808,13 +815,27 @@ export default function LandingPage() {
             >
               {t.cta.primary}
             </Button>
-            <Button size="lg" variant="outline" className="h-14 px-10 text-lg rounded-full border-primary/20 hover:bg-primary/5 bg-transparent">
+            <Button 
+              size="lg" 
+              variant="outline" 
+              className="h-14 px-10 text-lg rounded-full border-primary/20 hover:bg-primary/5 bg-transparent"
+              onClick={() => setLocation("/pricing")} // Contact Sales links to pricing page for contact
+            >
               {t.cta.secondary}
             </Button>
           </div>
           <p className="mt-6 text-sm text-muted-foreground">{t.cta.disclaimer}</p>
         </div>
       </section>
+
+      {/* Demo Booking Modal */}
+      <EnterpriseContactModal 
+        open={demoOpen} 
+        onOpenChange={setDemoOpen}
+        title="Live-Demo buchen"
+        description="Lernen Sie SafeDocs in einer persönlichen Session kennen. Wir zeigen Ihnen, wie Sie Ihren Workflow sicherer machen."
+        buttonText="Demo anfragen"
+      />
 
       {/* Footer */}
       <footer className="bg-white border-t border-border pt-16 pb-8">

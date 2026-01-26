@@ -9,9 +9,18 @@ import { useToast } from "@/hooks/use-toast";
 interface EnterpriseContactModalProps {
   open: boolean;
   onOpenChange: (open: boolean) => void;
+  title?: string;
+  description?: string;
+  buttonText?: string;
 }
 
-export function EnterpriseContactModal({ open, onOpenChange }: EnterpriseContactModalProps) {
+export function EnterpriseContactModal({ 
+  open, 
+  onOpenChange,
+  title = "Enterprise Anfrage",
+  description = "Interessiert an On-Premise oder einem individuellen Paket? Erzählen Sie uns kurz von Ihrem Anwendungsfall.",
+  buttonText = "Anfrage senden"
+}: EnterpriseContactModalProps) {
   const { toast } = useToast();
   const [loading, setLoading] = useState(false);
 
@@ -19,12 +28,12 @@ export function EnterpriseContactModal({ open, onOpenChange }: EnterpriseContact
     e.preventDefault();
     setLoading(true);
     
-    // Simulate API call
+    // Simulate Brevo API call
     setTimeout(() => {
       setLoading(false);
       onOpenChange(false);
       toast({
-        title: "Anfrage gesendet!",
+        title: "Anfrage über Brevo gesendet!",
         description: "Wir haben Ihre Nachricht erhalten und melden uns in Kürze.",
       });
     }, 1500);
@@ -34,10 +43,9 @@ export function EnterpriseContactModal({ open, onOpenChange }: EnterpriseContact
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="sm:max-w-[425px]">
         <DialogHeader>
-          <DialogTitle>Enterprise Anfrage</DialogTitle>
+          <DialogTitle>{title}</DialogTitle>
           <DialogDescription>
-            Interessiert an On-Premise oder einem individuellen Paket? 
-            Erzählen Sie uns kurz von Ihrem Anwendungsfall.
+            {description}
           </DialogDescription>
         </DialogHeader>
         <form onSubmit={handleSubmit} className="grid gap-4 py-4">
@@ -54,13 +62,13 @@ export function EnterpriseContactModal({ open, onOpenChange }: EnterpriseContact
             <Textarea 
               id="message" 
               required 
-              placeholder="Wir benötigen ca. 50 User und SSO Integration..." 
+              placeholder="Ihre Nachricht an uns..." 
               className="min-h-[100px]"
             />
           </div>
           <DialogFooter>
             <Button type="submit" disabled={loading}>
-              {loading ? "Wird gesendet..." : "Anfrage senden"}
+              {loading ? "Wird gesendet..." : buttonText}
             </Button>
           </DialogFooter>
         </form>
