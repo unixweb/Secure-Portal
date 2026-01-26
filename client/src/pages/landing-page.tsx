@@ -86,7 +86,6 @@ const translations = {
       security: "Sicherheit",
       howItWorks: "So funktioniert's",
       pricing: "Preise",
-      login: "Anmelden",
       getStarted: "Jetzt Starten"
     },
     hero: {
@@ -252,7 +251,6 @@ const translations = {
       security: "Security",
       howItWorks: "How it Works",
       pricing: "Pricing",
-      login: "Login",
       getStarted: "Get Started"
     },
     hero: {
