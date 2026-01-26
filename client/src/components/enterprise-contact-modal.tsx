@@ -24,27 +24,46 @@ export function EnterpriseContactModal({
   const { toast } = useToast();
   const [loading, setLoading] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
     
-    // Construct email content
-    const subject = encodeURIComponent(`Anfrage via SafeDocs Portal: ${title}`);
-    const body = encodeURIComponent(
-      `Name / Firma: ${(document.getElementById('name') as HTMLInputElement).value}\n` +
-      `E-Mail: ${(document.getElementById('email') as HTMLInputElement).value}\n\n` +
-      `Nachricht:\n${(document.getElementById('message') as HTMLTextAreaElement).value}`
-    );
+    const formData = {
+      name: (document.getElementById('name') as HTMLInputElement).value,
+      email: (document.getElementById('email') as HTMLInputElement).value,
+      message: (document.getElementById('message') as HTMLTextAreaElement).value,
+      subject: `Anfrage via SafeDocs Portal: ${title}`
+    };
 
-    // Open default email client
-    window.location.href = `mailto:info@safedocsportal.com?subject=${subject}&body=${body}`;
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
 
-    setLoading(false);
-    onOpenChange(false);
-    toast({
-      title: "E-Mail-Programm geöffnet",
-      description: "Bitte senden Sie die vorbereitete E-Mail ab, um uns zu kontaktieren.",
-    });
+      const data = await response.json();
+
+      if (response.ok) {
+        toast({
+          title: "Anfrage gesendet!",
+          description: "Wir haben Ihre Nachricht erhalten und melden uns in Kürze.",
+        });
+        onOpenChange(false);
+      } else {
+        throw new Error(data.error || 'Fehler beim Senden');
+      }
+    } catch (error) {
+      toast({
+        title: "Fehler",
+        description: error instanceof Error ? error.message : "Nachricht konnte nicht gesendet werden. Bitte versuchen Sie es später erneut.",
+        variant: "destructive",
+      });
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
