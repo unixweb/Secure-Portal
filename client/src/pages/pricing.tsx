@@ -65,6 +65,7 @@ const translations = {
         ]
       }
     },
+    vatNote: "Preis Netto zzgl. 19% MwSt",
     comparison: {
       saas: {
         title: "Warum Cloud SaaS?",
@@ -132,6 +133,7 @@ const translations = {
         ]
       }
     },
+    vatNote: "Net price plus 19% VAT",
     comparison: {
       saas: {
         title: "Why choose Cloud SaaS?",
@@ -214,6 +216,7 @@ export default function PricingPage() {
             <div className="mb-8">
               <span className="text-4xl font-bold text-foreground">{t.plans.starter.price}</span>
               <span className="text-muted-foreground">{t.plans.starter.period}</span>
+              <p className="text-xs text-muted-foreground mt-1">{t.vatNote}</p>
             </div>
             <ul className="space-y-4 mb-8 flex-1">
               {t.plans.starter.features.map((f, i) => (
@@ -244,6 +247,7 @@ export default function PricingPage() {
             <div className="mb-8">
               <span className="text-4xl font-bold text-white">{t.plans.business.price}</span>
               <span className="text-slate-400">{t.plans.business.period}</span>
+              <p className="text-xs text-slate-400 mt-1">{t.vatNote}</p>
             </div>
             <ul className="space-y-4 mb-8 flex-1 text-slate-300">
               {t.plans.business.features.map((f, i) => (
@@ -272,6 +276,7 @@ export default function PricingPage() {
                 <span className="text-2xl font-bold text-foreground">{t.plans.enterprise.price}</span>
               </div>
               <p className="text-xs text-muted-foreground mt-1">{t.plans.enterprise.subPrice}</p>
+              <p className="text-xs text-muted-foreground mt-1">{t.vatNote}</p>
             </div>
             <ul className="space-y-4 mb-8 flex-1">
               {t.plans.enterprise.features.map((f, i) => (
