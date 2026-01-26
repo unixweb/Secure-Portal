@@ -231,8 +231,8 @@ const translations = {
       ]
     },
     cta: {
-      headline: "Bereit für das Upgrade?",
-      subheadline: "Schließen Sie sich tausenden Unternehmen an, die SafeDocs Portal für den sicheren Austausch nutzen.",
+      headline: "Bereit für den Technologiewechsel?",
+      subheadline: "Ersetzen Sie unsichere E-Mail-Anhänge durch modernen, geschützten Datenaustausch. Die ideale Lösung für Ärzte, Kanzleien, Headhunter und alle, die Vertrauliches sicher übertragen müssen.",
       primary: "Kostenlos Starten",
       secondary: "Vertrieb Kontaktieren",
       disclaimer: "Keine Kreditkarte nötig · 14 Tage testen · Jederzeit kündbar"
@@ -396,8 +396,8 @@ const translations = {
       ]
     },
     cta: {
-      headline: "Ready for the upgrade?",
-      subheadline: "Join thousands of businesses using SafeDocs Portal to safely exchange millions of documents every month.",
+      headline: "Ready for the technology switch?",
+      subheadline: "Replace insecure email attachments with modern, secure document exchange. The ideal solution for doctors, law firms, headhunters, and anyone who needs to transfer sensitive information securely.",
       primary: "Get Started for Free",
       secondary: "Contact Sales",
       disclaimer: "No credit card required · 14-day free trial · Cancel anytime"
