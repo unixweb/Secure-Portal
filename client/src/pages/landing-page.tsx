@@ -91,14 +91,14 @@ const translations = {
       badge: "Für Unternehmen mit hohen Sicherheitsansprüchen",
       title: "Sicherer Dokumentenaustausch für",
       titleHighlight: "Moderne Unternehmen",
-      subtitle: "Das sichere Portal für Firmen und Unternehmer. Verwalten Sie Mandanten, tauschen Sie sensible Verträge aus und bearbeiten Sie Rechnungen mit moderner, authentifizierter Verschlüsselung.",
+      subtitle: "Das sichere Portal für Firmen und Selbstständige. Verwalten Sie Kontakte, tauschen Sie sensible Verträge aus und bearbeiten Sie Rechnungen mit moderner, authentifizierter Verschlüsselung.",
       ctaPrimary: "Kostenlos Testen",
       ctaSecondary: "Demo Buchen",
       trust: "Vertraut von 500+ Unternehmen"
     },
     features: {
       headline: "Alles was Sie brauchen für sicheres Management",
-      subheadline: "Gebaut für Mandanten, Rechnungen und sensible Verträge. Erleben Sie den neuen Standard in der sicheren Kundenkommunikation.",
+      subheadline: "Gebaut für Kunden, Rechnungen und sensible Verträge. Erleben Sie den neuen Standard in der sicheren Kommunikation.",
       items: [
         {
           title: "AES-256-GCM Verschlüsselung",
@@ -160,8 +160,8 @@ const translations = {
       headline: "So funktioniert's",
       subheadline: "Einfach, sicher und bidirektional. Der Standard für den Datenaustausch.",
       tabs: {
-        firmToClient: "Kanzlei an Mandant",
-        clientToFirm: "Mandant an Kanzlei"
+        firmToClient: "Daten Senden",
+        clientToFirm: "Daten Empfangen"
       },
       firmToClient: [
         {
@@ -183,17 +183,17 @@ const translations = {
       clientToFirm: [
         {
           title: "Zugang",
-          desc: "Mandant erhält einen sicheren Upload-Link. Kein komplizierter Account oder Login notwendig.",
+          desc: "Empfänger erhält einen sicheren Upload-Link. Kein komplizierter Account oder Login notwendig.",
           code: "access token verified"
         },
         {
           title: "Sicherer Upload",
-          desc: "Mandant lädt Dokumente hoch. Client-Side Encryption verschlüsselt Daten noch im Browser.",
+          desc: "Empfänger lädt Dokumente hoch. Client-Side Encryption verschlüsselt Daten noch im Browser.",
           code: "client-side encryption: active"
         },
         {
           title: "Empfang",
-          desc: "Automatische Benachrichtigung an die Kanzlei. Dokumente stehen sofort sicher bereit.",
+          desc: "Automatische Benachrichtigung an Sie. Dokumente stehen sofort sicher bereit.",
           code: "notification sent: new_file"
         }
       ]
@@ -208,7 +208,7 @@ const translations = {
         },
         {
           q: "Wer kann auf meine Dokumente zugreifen?",
-          a: "Nur berechtigte Benutzer innerhalb Ihres Mandantenkontexts. Zugriffe sind rollenbasiert und nachvollziehbar."
+          a: "Nur berechtigte Benutzer innerhalb Ihres Kontextes. Zugriffe sind rollenbasiert und nachvollziehbar."
         },
         {
           q: "Werden hochgeladene Dateien geprüft?",
@@ -256,14 +256,14 @@ const translations = {
       badge: "For Companies with High Security Standards",
       title: "Secure Document Exchange for",
       titleHighlight: "Modern Business",
-      subtitle: "The secure portal for companies and entrepreneurs. Manage clients, exchange sensitive contracts, and handle invoices with modern, authenticated encryption.",
+      subtitle: "The secure portal for companies and professionals. Manage contacts, exchange sensitive contracts, and handle invoices with modern, authenticated encryption.",
       ctaPrimary: "Start Free Trial",
       ctaSecondary: "Book Demo",
       trust: "Trusted by 500+ companies"
     },
     features: {
       headline: "Everything you need to manage documents securely",
-      subheadline: "Built for mandants, invoices, and sensitive contracts. Experience the new standard in secure client communication.",
+      subheadline: "Built for clients, invoices, and sensitive contracts. Experience the new standard in secure communication.",
       items: [
         {
           title: "AES-256-GCM Encryption",
@@ -325,8 +325,8 @@ const translations = {
       headline: "How it Works",
       subheadline: "Simple, secure, and bidirectional. The standard for document exchange.",
       tabs: {
-        firmToClient: "Firm to Client",
-        clientToFirm: "Client to Firm"
+        firmToClient: "Send Data",
+        clientToFirm: "Receive Data"
       },
       firmToClient: [
         {
@@ -348,17 +348,17 @@ const translations = {
       clientToFirm: [
         {
           title: "Access",
-          desc: "Client receives secure upload link. No complex account or login required.",
+          desc: "Recipient receives secure upload link. No complex account or login required.",
           code: "access token verified"
         },
         {
           title: "Secure Upload",
-          desc: "Client uploads documents. Client-side encryption secures data in the browser.",
+          desc: "Recipient uploads documents. Client-side encryption secures data in the browser.",
           code: "client-side encryption: active"
         },
         {
           title: "Receive",
-          desc: "Automatic notification to the firm. Documents are immediately available securely.",
+          desc: "Automatic notification to you. Documents are immediately available securely.",
           code: "notification sent: new_file"
         }
       ]
@@ -373,7 +373,7 @@ const translations = {
         },
         {
           q: "Who can access my documents?",
-          a: "Only authorized users within your client context. Access is role-based and traceable."
+          a: "Only authorized users within your context. Access is role-based and traceable."
         },
         {
           q: "Are uploaded files checked?",
