@@ -95,8 +95,7 @@ const translations = {
       titleHighlight: "Moderne Unternehmen",
       subtitle: "Das sichere Portal für Firmen und Selbstständige. Verwalten Sie Kontakte, tauschen Sie sensible Verträge aus und bearbeiten Sie Rechnungen mit moderner, authentifizierter Verschlüsselung.",
       ctaPrimary: "Kostenlos Testen",
-      ctaSecondary: "Demo Buchen",
-      trust: "Vertraut von 500+ Unternehmen"
+      ctaSecondary: "Demo Buchen"
     },
     features: {
       headline: "Alles was Sie brauchen für sicheres Management",
@@ -263,8 +262,7 @@ const translations = {
       titleHighlight: "Modern Business",
       subtitle: "The secure portal for companies and professionals. Manage contacts, exchange sensitive contracts, and handle invoices with modern, authenticated encryption.",
       ctaPrimary: "Start Free Trial",
-      ctaSecondary: "Book Demo",
-      trust: "Trusted by 500+ companies"
+      ctaSecondary: "Book Demo"
     },
     features: {
       headline: "Everything you need to manage documents securely",
@@ -579,15 +577,6 @@ export default function LandingPage() {
                 >
                   {t.hero.ctaSecondary}
                 </Button>
-              </div>
-              
-              <div className="flex items-center gap-4 text-sm text-muted-foreground">
-                <div className="flex -space-x-2">
-                  {[1, 2, 3, 4].map((i) => (
-                    <div key={i} className="h-8 w-8 rounded-full border-2 border-background bg-slate-200" />
-                  ))}
-                </div>
-                <p>{t.hero.trust}</p>
               </div>
             </motion.div>
 
