@@ -241,7 +241,6 @@ const translations = {
     footer: {
       desc: "Sicherer Dokumentenaustausch für moderne Unternehmen. Gebaut für Vertrauen, Geschwindigkeit und Compliance.",
       product: "Produkt",
-      company: "Firma",
       legal: "Rechtliches",
       rights: "Alle Rechte vorbehalten."
     }
@@ -406,7 +405,6 @@ const translations = {
     footer: {
       desc: "Secure document exchange for the modern enterprise. Built for trust, speed, and compliance.",
       product: "Product",
-      company: "Company",
       legal: "Legal",
       rights: "All rights reserved."
     }
@@ -857,15 +855,6 @@ export default function LandingPage() {
                 <li><a href="#" className="hover:text-primary">{t.nav.features}</a></li>
                 <li><a href="#" className="hover:text-primary">Security</a></li>
                 <li><a href="#" className="hover:text-primary">{t.nav.pricing}</a></li>
-              </ul>
-            </div>
-
-            <div>
-              <h4 className="font-bold mb-4">{t.footer.company}</h4>
-              <ul className="space-y-2 text-sm text-muted-foreground">
-                <li><a href="#" className="hover:text-primary">About Us</a></li>
-                <li><a href="#" className="hover:text-primary">Careers</a></li>
-                <li><a href="#" className="hover:text-primary">Blog</a></li>
               </ul>
             </div>
 
