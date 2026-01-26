@@ -838,8 +838,8 @@ export default function LandingPage() {
       {/* Footer */}
       <footer className="bg-white border-t border-border pt-16 pb-8">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid md:grid-cols-4 gap-12 mb-12">
-            <div className="col-span-1 md:col-span-1">
+          <div className="grid md:grid-cols-3 gap-12 mb-12">
+            <div>
               <div className="flex items-center gap-2 mb-4">
                 <img src={logoIcon} alt="SafeDocs Portal Logo" className="h-6 w-6 object-contain" />
                 <span className="text-lg font-bold font-heading">SafeDocs Portal</span>
@@ -852,9 +852,9 @@ export default function LandingPage() {
             <div>
               <h4 className="font-bold mb-4">{t.footer.product}</h4>
               <ul className="space-y-2 text-sm text-muted-foreground">
-                <li><a href="#" className="hover:text-primary">{t.nav.features}</a></li>
-                <li><a href="#" className="hover:text-primary">Security</a></li>
-                <li><a href="#" className="hover:text-primary">{t.nav.pricing}</a></li>
+                <li><a href="#features" className="hover:text-primary">{t.nav.features}</a></li>
+                <li><a href="#security" className="hover:text-primary">Security</a></li>
+                <li><Link href="/pricing"><a className="hover:text-primary">{t.nav.pricing}</a></Link></li>
               </ul>
             </div>
 
