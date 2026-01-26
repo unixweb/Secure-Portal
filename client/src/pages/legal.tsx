@@ -80,7 +80,7 @@ export default function LegalPage() {
             <strong>1.1</strong> Wir freuen uns, dass du unsere Website besuchst und bedanken uns für dein Interesse. Im Folgenden informieren wir dich über den Umgang mit deinen personenbezogenen Daten bei der Nutzung unserer Website. Personenbezogene Daten sind hierbei alle Daten, mit denen du persönlich identifiziert werden kannst.
           </p>
           <p className="mb-4">
-            <strong>1.2</strong> Verantwortlicher für die Datenverarbeitung auf dieser Website im Sinne der Datenschutz-Grundverordnung (DSGVO) ist Joachim Hummel, SafeDocs Portal GmbH, Lisbergstrasse 12, 81249 München, Deutschland, Tel.: +49-89-87181763, E-Mail: info@safedocsportal.com. Der für die Verarbeitung von personenbezogenen Daten Verantwortliche ist diejenige natürliche oder juristische Person, die allein oder gemeinsam mit anderen über die Zwecke und Mittel der Verarbeitung von personenbezogenen Daten entscheidet.
+            <strong>1.2</strong> Verantwortlicher für die Datenverarbeitung auf dieser Website im Sinne der Datenschutz-Grundverordnung (DSGVO) ist Joachim Hummel, Lisbergstrasse 12, 81249 München, Deutschland, Tel.: +49-89-87181763, E-Mail: info@safedocsportal.com. Der für die Verarbeitung von personenbezogenen Daten Verantwortliche ist diejenige natürliche oder juristische Person, die allein oder gemeinsam mit anderen über die Zwecke und Mittel der Verarbeitung von personenbezogenen Daten entscheidet.
           </p>
 
           <h2 className="text-xl font-bold mt-8 mb-4">2) Datenerfassung beim Besuch unserer Website</h2>
