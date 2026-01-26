@@ -37,7 +37,7 @@ export async function registerRoutes(
       `;
       sendSmtpEmail.sender = { 
         name: "SafeDocs Portal", 
-        email: "noreply@safedocsportal.com" 
+        email: "info@safedocsportal.com" 
       };
       sendSmtpEmail.to = [{ 
         email: "info@safedocsportal.com", 
