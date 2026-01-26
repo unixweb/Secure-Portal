@@ -152,8 +152,13 @@ export default function PricingPage() {
   const { toast } = useToast();
 
   const handleCheckout = (planName: string, price: string) => {
-    if (planName === "Cloud Starter" || planName === "Cloud Starter") {
+    if (planName === "Cloud Starter") {
       window.open("https://buy.stripe.com/test_00wdR9cIjcjie7C4xu1VK00", "_blank");
+      return;
+    }
+
+    if (planName === "Cloud Business") {
+      window.open("https://buy.stripe.com/test_14AbJ15fRerqd3ye841VK01", "_blank");
       return;
     }
 
