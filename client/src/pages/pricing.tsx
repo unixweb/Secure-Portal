@@ -4,6 +4,7 @@ import { Check, Cloud, Shield, Server, Globe } from "lucide-react";
 import { useState } from "react";
 import { useToast } from "@/hooks/use-toast";
 import { EnterpriseContactModal } from "@/components/enterprise-contact-modal";
+import { useLanguage } from "@/lib/language-context";
 
 type Language = 'de' | 'en';
 
@@ -145,14 +146,10 @@ const translations = {
 };
 
 export default function PricingPage() {
-  const [lang, setLang] = useState<Language>('de');
+  const { language: lang, toggleLanguage: toggleLang } = useLanguage();
   const [contactOpen, setContactOpen] = useState(false);
   const t = translations[lang];
   const { toast } = useToast();
-
-  const toggleLang = () => {
-    setLang(l => l === 'de' ? 'en' : 'de');
-  };
 
   const handleCheckout = (planName: string, price: string) => {
     if (planName === "Cloud Starter" || planName === "Cloud Starter") {

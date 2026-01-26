@@ -30,6 +30,8 @@ import {
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
+import { useLanguage } from "@/lib/language-context";
+
 // Import generated assets
 import heroImage from "@assets/generated_images/secure_digital_document_transfer_visualization_with_padlocks_and_floating_files..png";
 import logoIcon from "@assets/new_logo/favicon.svg";
@@ -412,14 +414,10 @@ const translations = {
 
 export default function LandingPage() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [lang, setLang] = useState<Language>('de'); // Default to German
+  const { language: lang, toggleLanguage: toggleLang } = useLanguage();
   const [activeFlow, setActiveFlow] = useState<'firmToClient' | 'clientToFirm'>('firmToClient');
 
   const t = translations[lang];
-
-  const toggleLang = () => {
-    setLang(l => l === 'de' ? 'en' : 'de');
-  };
 
   const fadeIn = {
     hidden: { opacity: 0, y: 20 },
