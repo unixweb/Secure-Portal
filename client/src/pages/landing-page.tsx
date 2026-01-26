@@ -1,4 +1,4 @@
-import { Link } from "wouter";
+import { Link, useLocation } from "wouter";
 import { Button } from "@/components/ui/button";
 import { 
   ShieldCheck, 
@@ -416,6 +416,7 @@ export default function LandingPage() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const { language: lang, toggleLanguage: toggleLang } = useLanguage();
   const [activeFlow, setActiveFlow] = useState<'firmToClient' | 'clientToFirm'>('firmToClient');
+  const [, setLocation] = useLocation();
 
   const t = translations[lang];
 
@@ -482,7 +483,12 @@ export default function LandingPage() {
                 {lang.toUpperCase()}
               </button>
 
-              <Button className="bg-primary hover:bg-primary/90 text-white shadow-lg shadow-primary/20">{t.nav.getStarted}</Button>
+              <Button 
+                className="bg-primary hover:bg-primary/90 text-white shadow-lg shadow-primary/20"
+                onClick={() => setLocation("/pricing")}
+              >
+                {t.nav.getStarted}
+              </Button>
             </div>
 
             {/* Mobile Menu Button */}
@@ -511,7 +517,12 @@ export default function LandingPage() {
               <a href="#how-it-works" className="text-base font-medium text-foreground">{t.nav.howItWorks}</a>
               <a href="#pricing" className="text-base font-medium text-foreground">{t.nav.pricing}</a>
               <div className="pt-4 flex flex-col gap-2">
-                <Button className="w-full bg-primary text-white">{t.nav.getStarted}</Button>
+                <Button 
+                  className="w-full bg-primary text-white"
+                  onClick={() => setLocation("/pricing")}
+                >
+                  {t.nav.getStarted}
+                </Button>
               </div>
             </div>
           </motion.div>
@@ -545,7 +556,11 @@ export default function LandingPage() {
                 {t.hero.subtitle}
               </p>
               <div className="flex flex-col sm:flex-row gap-4 mb-12">
-                <Button size="lg" className="bg-primary hover:bg-primary/90 text-white shadow-xl shadow-primary/25 h-12 px-8 text-base">
+                <Button 
+                  size="lg" 
+                  className="bg-primary hover:bg-primary/90 text-white shadow-xl shadow-primary/25 h-12 px-8 text-base"
+                  onClick={() => setLocation("/pricing")}
+                >
                   {t.hero.ctaPrimary} <ArrowRight className="ml-2 h-5 w-5" />
                 </Button>
                 <Button size="lg" variant="outline" className="h-12 px-8 text-base border-primary/20 text-primary hover:bg-primary/5">
@@ -786,7 +801,11 @@ export default function LandingPage() {
             {t.cta.subheadline}
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-4">
-            <Button size="lg" className="bg-primary hover:bg-primary/90 h-14 px-10 text-lg rounded-full text-white">
+            <Button 
+              size="lg" 
+              className="bg-primary hover:bg-primary/90 h-14 px-10 text-lg rounded-full text-white"
+              onClick={() => setLocation("/pricing")}
+            >
               {t.cta.primary}
             </Button>
             <Button size="lg" variant="outline" className="h-14 px-10 text-lg rounded-full border-primary/20 hover:bg-primary/5 bg-transparent">
