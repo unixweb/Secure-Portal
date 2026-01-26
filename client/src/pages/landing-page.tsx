@@ -739,9 +739,9 @@ export default function LandingPage() {
             <div>
               <h4 className="font-bold mb-4">{t.footer.legal}</h4>
               <ul className="space-y-2 text-sm text-muted-foreground">
-                <li><a href="#" className="hover:text-primary">Privacy Policy</a></li>
-                <li><a href="#" className="hover:text-primary">Terms of Service</a></li>
-                <li><a href="#" className="hover:text-primary">Impressum</a></li>
+                <li><Link href="/legal"><a className="hover:text-primary">Privacy Policy</a></Link></li>
+                <li><Link href="/legal"><a className="hover:text-primary">Terms of Service</a></Link></li>
+                <li><Link href="/legal"><a className="hover:text-primary">Impressum</a></Link></li>
               </ul>
             </div>
           </div>

@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Check, Cloud, Shield, Server, Globe } from "lucide-react";
 import { useState } from "react";
 import { useToast } from "@/hooks/use-toast";
+import { EnterpriseContactModal } from "@/components/enterprise-contact-modal";
 
 type Language = 'de' | 'en';
 
@@ -145,6 +146,7 @@ const translations = {
 
 export default function PricingPage() {
   const [lang, setLang] = useState<Language>('de');
+  const [contactOpen, setContactOpen] = useState(false);
   const t = translations[lang];
   const { toast } = useToast();
 
@@ -272,17 +274,14 @@ export default function PricingPage() {
             <Button 
               variant="outline" 
               className="w-full"
-              onClick={() => {
-                toast({
-                  title: "Sales Contact",
-                  description: "Opening contact form for Enterprise inquiry...",
-                });
-              }}
+              onClick={() => setContactOpen(true)}
             >
               {t.plans.enterprise.cta}
             </Button>
           </div>
         </div>
+
+        <EnterpriseContactModal open={contactOpen} onOpenChange={setContactOpen} />
 
         {/* Comparison / FAQ Section Teaser */}
         <div className="mt-20 border-t border-border pt-12 max-w-4xl mx-auto">
