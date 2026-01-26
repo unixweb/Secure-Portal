@@ -2,6 +2,7 @@ import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
 import { Check, Cloud, Shield, Server, Globe } from "lucide-react";
 import { useState } from "react";
+import { useToast } from "@/hooks/use-toast";
 
 type Language = 'de' | 'en';
 
@@ -145,9 +146,17 @@ const translations = {
 export default function PricingPage() {
   const [lang, setLang] = useState<Language>('de');
   const t = translations[lang];
+  const { toast } = useToast();
 
   const toggleLang = () => {
     setLang(l => l === 'de' ? 'en' : 'de');
+  };
+
+  const handleCheckout = (planName: string, price: string) => {
+    toast({
+      title: "Checkout Simulation",
+      description: `Redirecting to Stripe Checkout for ${planName} (${price})...`,
+    });
   };
 
   return (
@@ -202,7 +211,13 @@ export default function PricingPage() {
                 <FeatureItem key={i} text={f} />
               ))}
             </ul>
-            <Button variant="outline" className="w-full">{t.plans.starter.cta}</Button>
+            <Button 
+              variant="outline" 
+              className="w-full"
+              onClick={() => handleCheckout(t.plans.starter.name, t.plans.starter.price)}
+            >
+              {t.plans.starter.cta}
+            </Button>
           </div>
 
           {/* Card 2: Cloud Pro (SaaS) - Highlighted */}
@@ -226,7 +241,12 @@ export default function PricingPage() {
                 <FeatureItem key={i} text={f} dark />
               ))}
             </ul>
-            <Button className="w-full bg-primary hover:bg-primary/90 text-white">{t.plans.business.cta}</Button>
+            <Button 
+              className="w-full bg-primary hover:bg-primary/90 text-white"
+              onClick={() => handleCheckout(t.plans.business.name, t.plans.business.price)}
+            >
+              {t.plans.business.cta}
+            </Button>
           </div>
 
           {/* Card 3: On-Premise (Self-Hosted) */}
@@ -249,7 +269,18 @@ export default function PricingPage() {
                 <FeatureItem key={i} text={f} />
               ))}
             </ul>
-            <Button variant="outline" className="w-full">{t.plans.enterprise.cta}</Button>
+            <Button 
+              variant="outline" 
+              className="w-full"
+              onClick={() => {
+                toast({
+                  title: "Sales Contact",
+                  description: "Opening contact form for Enterprise inquiry...",
+                });
+              }}
+            >
+              {t.plans.enterprise.cta}
+            </Button>
           </div>
         </div>
 
