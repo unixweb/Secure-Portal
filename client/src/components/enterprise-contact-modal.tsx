@@ -28,15 +28,23 @@ export function EnterpriseContactModal({
     e.preventDefault();
     setLoading(true);
     
-    // Simulate Brevo API call
-    setTimeout(() => {
-      setLoading(false);
-      onOpenChange(false);
-      toast({
-        title: "Anfrage über Brevo gesendet!",
-        description: "Wir haben Ihre Nachricht erhalten und melden uns in Kürze.",
-      });
-    }, 1500);
+    // Construct email content
+    const subject = encodeURIComponent(`Anfrage via SafeDocs Portal: ${title}`);
+    const body = encodeURIComponent(
+      `Name / Firma: ${(document.getElementById('name') as HTMLInputElement).value}\n` +
+      `E-Mail: ${(document.getElementById('email') as HTMLInputElement).value}\n\n` +
+      `Nachricht:\n${(document.getElementById('message') as HTMLTextAreaElement).value}`
+    );
+
+    // Open default email client
+    window.location.href = `mailto:info@safedocsportal.com?subject=${subject}&body=${body}`;
+
+    setLoading(false);
+    onOpenChange(false);
+    toast({
+      title: "E-Mail-Programm geöffnet",
+      description: "Bitte senden Sie die vorbereitete E-Mail ab, um uns zu kontaktieren.",
+    });
   };
 
   return (
